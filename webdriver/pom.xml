@@ -11,6 +11,10 @@
 
     <artifactId>webdriver</artifactId>
 
+    <properties>
+        <webdriver.path>/usr/local/bin/chromedriver</webdriver.path>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -34,6 +38,17 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <webdriver.chrome.driver>${webdriver.path}</webdriver.chrome.driver>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
